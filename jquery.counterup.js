@@ -33,8 +33,10 @@
             var isFloat = /^[0-9]+\.[0-9]+$/.test(num);
             var decimalPlaces = isFloat ? (num.split('.')[1] || []).length : 0;
 
+			nums.unshift(num);		// avoid final number is different from original one
+
             // Generate list of incremental numbers to display
-            for (var i = divisions; i >= 1; i--) {
+            for (var i = divisions - 1; i >= 1; i--) {
 
                 // Preserve as int if input was int
                 var newNum = parseInt(num / divisions * i);
